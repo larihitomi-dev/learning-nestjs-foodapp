@@ -8,6 +8,7 @@ export class RestauranteService {
     (new Restaurante({id: 2, nome: 'Espetos na Grelha', status: true, avaliacao: 3})),
     (new Restaurante({id: 3, nome: 'O Portugues', status: true, avaliacao: 4})),
     (new Restaurante({id: 4, nome: 'Mexicano', status: true, avaliacao: 5})),
+    (new Restaurante({id: 5, nome: 'Casa da Vó', status: true, avaliacao: 5})),
   ];
 
   getRestaurantes(): Array<Restaurante> {
