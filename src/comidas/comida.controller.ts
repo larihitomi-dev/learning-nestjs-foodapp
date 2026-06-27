@@ -1,4 +1,4 @@
-import { Controller, Get, Param } from '@nestjs/common';
+import { Controller, Get, Param, Query } from '@nestjs/common';
 import { ComidaService } from './comida.service';
 import { Comida } from './models/comidas.model';
 
@@ -7,9 +7,17 @@ export class ComidaController {
     constructor(private readonly comidaService: ComidaService) {}
 
     @Get()
-    findAll(): Array<Comida> {
+    findAll(
+        @Query('categoria') categoria: string = ''
+    ): Array<Comida> {
         this.comidaService.loadVinculoComidaRestaurantes();
-        return this.comidaService.getComidas();
+        let comidas = this.comidaService.getComidas();
+
+        if (categoria !== '') {
+            comidas = comidas.filter((comidas, index) => comidas.restaurante?.categoria === categoria);
+        }
+
+        return comidas;
     }
 
     @Get(':id')
