@@ -3,6 +3,7 @@ export class Restaurante {
     nome: string = '';
     status: boolean = false;
     avaliacao: number = 0;
+    categoria: string = '';
 
     constructor(partial: Partial<Restaurante>) {
         Object.assign(this, partial);
